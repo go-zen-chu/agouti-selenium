@@ -11,7 +11,7 @@ func main() {
 	if err := s.LoginGoogle(); err != nil {
 		panic(err)
 	}
-	//if err := s.Stop(); err != nil {
-	//	panic(err)
-	//}
+	if err := s.Stop(); err != nil {
+		panic(err)
+	}
 }

@@ -32,3 +32,12 @@ go run main.go
 ## package format 
 
 [GitHub - golang-standards/project-layout: Standard Go Project Layout](https://github.com/golang-standards/project-layout)
+
+
+## known issue
+
+- when navigating invalid session id while using ChromeDriver 75.0.3770.90 
+
+```
+failed to navigate: request unsuccessful: invalid session id
+```

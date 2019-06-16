@@ -18,7 +18,7 @@ type sample struct {
 	browserTester selenium.BrowserTester
 }
 
-const loginURL = "https://accounts.google.com/ServiceLogin"
+const loginURL = "https://accounts.google.com/signin/v2/identifier"
 
 func NewSample(config *Config, browserTester selenium.BrowserTester) Sample {
 	s := &sample{
@@ -41,18 +41,23 @@ func (s *sample) LoginGoogle() error {
 	if err != nil {
 		return fmt.Errorf("error to navigate: %s", err.Error())
 	}
-	//err = s.browserTester.FillByID("identifierId", s.config.User)
-	//if err != nil {
-	//	return  fmt.Errorf("error filling user: %s", err.Error())
-	//}
-	//
-	//err = s.browserTester.FillByID("pass_word", s.config.Password)
-	//if err != nil {
-	//	return  fmt.Errorf("error filling password : %s", err.Error())
-	//}
-	//err = s.browserTester.ClickByID("sbmt")
-	//if err != nil {
-	//	return  fmt.Errorf("error submitting : %s", err.Error())
-	//}
+	err = s.browserTester.FillByID("identifierId", s.config.User)
+	if err != nil {
+		return  fmt.Errorf("error filling user: %s", err.Error())
+	}
+	// in actual case google randomly generate submit button
+	// so code below doesn't work :(
+	err = s.browserTester.ClickByID("submit")
+	if err != nil {
+		return  fmt.Errorf("error submitting : %s", err.Error())
+	}
+	err = s.browserTester.FillByID("password", s.config.Password)
+	if err != nil {
+		return  fmt.Errorf("error filling password : %s", err.Error())
+	}
+	err = s.browserTester.ClickByID("submit")
+	if err != nil {
+		return  fmt.Errorf("error submitting : %s", err.Error())
+	}
 	return nil
 }

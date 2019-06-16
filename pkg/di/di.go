@@ -32,7 +32,8 @@ func (di DI) Sample() sample.Sample {
 func (di DI) BrowserTester() selenium.BrowserTester {
 	key := "BrowserTester"
 	return di.retrieveCache(key, func() (interface{}, error) {
-		val := is.NewBrowserTester("chrome")
+		cnf := di.Config()
+		val := is.NewBrowserTester(cnf.Driver)
 		return val, nil
 	}).(selenium.BrowserTester)
 }

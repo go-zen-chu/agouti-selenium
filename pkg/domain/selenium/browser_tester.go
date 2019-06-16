@@ -9,4 +9,5 @@ type BrowserTester interface {
 	Navigate(url string) error
 	FillByID(id, text string) error
 	ClickByID(id string) error
+	ScreenShot(path string) error
 }

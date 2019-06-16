@@ -17,8 +17,8 @@ func LoadConfigFromEnv() (*Config, error) {
 		field *string
 		name  string
 	}{
-		{field: &c.User, name: "USER"},
-		{field: &c.Password, name: "PASSWORD"},
+		{field: &c.User, name: "LOGIN_USER"},
+		{field: &c.Password, name: "LOGIN_PASSWORD"},
 		{field: &c.Driver, name: "WEBDRIVER"},
 	}
 	emptyProp := ""
